@@ -1,40 +1,44 @@
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background-color: #f0f2f5;
-    color: #333;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: linear-gradient(115deg, #0f0c29, #302b63, #24243e);
+    color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     padding: 20px;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 .wadah-aplikasi {
     width: 100%;
     max-width: 450px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     transition: all 0.3s ease;
 }
 
 .area-input {
-    padding: 25px 30px;
-    background-color: #fafafa;
-    border-bottom: 1px solid #e0e0e0;
+    padding: 30px 30px 25px 30px;
 }
 .area-input h1 {
     margin: 0;
     font-size: 1.8em;
+    font-weight: 700;
     text-align: center;
-    color: #24292e;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 .area-input p {
     font-size: 0.9em;
     text-align: center;
-    color: #586069;
+    color: #e0e0e0;
     margin: 10px 0 20px 0;
 }
 .grup-input {
@@ -43,30 +47,38 @@ body {
 }
 #input-username {
     flex-grow: 1;
-    padding: 10px 15px;
+    padding: 12px 15px;
     font-size: 1em;
-    border: 1px solid #d1d5da;
-    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    border-radius: 8px;
     transition: border-color 0.3s, box-shadow 0.3s;
+}
+#input-username::placeholder {
+    color: #cccccc;
 }
 #input-username:focus {
     outline: none;
-    border-color: #0366d6;
-    box-shadow: 0 0 0 3px rgba(3, 102, 214, 0.2);
+    border-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
 }
 #tombol-hasilkan {
-    padding: 10px 20px;
+    padding: 12px 20px;
     font-size: 1em;
     font-weight: 600;
-    color: #ffffff;
-    background-color: #0366d6;
+    font-family: 'Poppins', sans-serif;
+    color: #1a1a1a;
+    background-color: #ffffff;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 #tombol-hasilkan:hover {
-    background-color: #0056b3;
+    background-color: #e0e0e0;
+    transform: scale(1.05);
 }
 
 #wadah-kartu {
@@ -75,10 +87,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 #pesan-status {
-    color: #888;
-    font-style: italic;
+    color: #cccccc;
+    font-style: normal;
 }
 
 .kartu-profil {
@@ -102,27 +115,27 @@ body {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    border: 4px solid #ffffff;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 4px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 .kartu-profil h2 {
     margin: 15px 0 5px 0;
-    font-size: 1.6em;
-    color: #24292e;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #ffffff;
 }
 .kartu-profil .username {
     font-size: 1.1em;
-    color: #586069;
-    margin-bottom: 15px;
+    color: #e0e0e0;
+    margin-bottom: 20px;
 }
 .area-statistik {
     display: flex;
     justify-content: space-around;
     width: 100%;
-    background-color: #f6f8fa;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid #e1e4e8;
+    background: none;
+    padding: 0;
+    border: none;
 }
 .stat-item {
     display: flex;
@@ -130,26 +143,28 @@ body {
     align-items: center;
 }
 .stat-item .angka {
-    font-size: 1.4em;
-    font-weight: 600;
-    color: #24292e;
+    font-size: 1.6em;
+    font-weight: 700;
+    color: #ffffff;
 }
 .stat-item .label {
     font-size: 0.8em;
-    color: #586069;
+    color: #cccccc;
     text-transform: uppercase;
 }
 .kartu-profil .link-follow {
-    margin-top: 20px;
-    padding: 10px 25px;
+    margin-top: 25px;
+    padding: 12px 30px;
     font-size: 1em;
     font-weight: 600;
-    color: #ffffff;
-    background-color: #2ea44f;
-    border-radius: 6px;
+    color: #1a1a1a;
+    background-color: #ffffff;
+    border-radius: 8px;
     text-decoration: none;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 .kartu-profil .link-follow:hover {
-    background-color: #22863a;
+    background-color: #e0e0e0;
+    transform: scale(1.05);
 }
