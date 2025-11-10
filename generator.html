@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generator Kartu Profil GitHub Profesional</title>
+    <title>Generator Kartu Profil GitHub</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
     <link rel="stylesheet" href="ui.css">
 </head>
 <body>
@@ -19,22 +17,22 @@
         
         <div class="area-input">
             <h1>Generator Kartu GitHub</h1>
-            <p>Dapatkan kartu profil GitHub yang sangat profesional!</p>
+            <p>Masukkan username untuk membuat kartu profil profesional.</p>
             <div class="grup-input">
-                <input type="text" id="input-username" placeholder="Masukkan username GitHub">
+                <input type="text" id="input-username" placeholder="Contoh: Loufilibra04">
                 <button id="tombol-hasilkan">Hasilkan!</button>
             </div>
             <button id="tombol-unduh-png" class="tombol-unduh" style="display: none;">
-                <i class="fas fa-download"></i> Unduh Kartu (PNG)
+                Unduh Kartu (PNG)
             </button>
         </div>
 
         <div id="wadah-konten-kartu">
-            <div id="pesan-status">Masukkan username di atas untuk memulai...</div>
+            <div id="pesan-status">Masukkan username di atas...</div>
         </div>
 
     </div>
-
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="api.js"></script>
 </body>
