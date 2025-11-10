@@ -63,10 +63,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const namaLengkap = data.name || data.login;
         const usernameGithub = `@${data.login}`;
         const bio = data.bio || 'Tidak ada bio.';
-        const lokasi = data.location || 'Tidak diketahui';
-        const email = data.email || 'Tidak tersedia';
-        const blog = data.blog;
+        const lokasi = data.location || null;
+        const email = data.email || null;
+        const blog = data.blog || null;
         const followers = data.followers;
+
+        let blogHostname = '';
+        if (blog) {
+            try {
+                blogHostname = new URL(blog).hostname;
+            } catch (_) {
+                blogHostname = blog;
+            }
+        }
 
         const htmlKartu = `
             <div class="kartu-profil-profesional" id="kartu-untuk-unduh">
@@ -77,8 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     <ul class="detail-kontak">
                         <li><i class="fas fa-user-friends"></i> ${followers} Followers</li>
                         ${lokasi ? `<li><i class="fas fa-map-marker-alt"></i> ${lokasi}</li>` : ''}
-                        ${email && email !== 'null' ? `<li><i class="fas fa-envelope"></i> ${email}</li>` : ''}
-                        ${blog && blog !== 'null' ? `<li><i class="fas fa-globe"></i> <a href="${blog}" target="_blank" style="color: inherit; text-decoration: none;">${new URL(blog).hostname}</a></li>` : ''}
+                        ${email ? `<li><i class="fas fa-envelope"></i> ${email}</li>` : ''}
+                        ${blog ? `<li><i class="fas fa-globe"></i> <a href="${blog}" target="_blank" style="color: inherit; text-decoration: none;">${blogHostname}</a></li>` : ''}
                         <li><i class="fab fa-github"></i> <a href="${data.html_url}" target="_blank" style="color: inherit; text-decoration: none;">${usernameGithub}</a></li>
                     </ul>
                 </div>
@@ -106,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
             allowTaint: true
         }).then(canvas => {
             const link = document.createElement('a');
-            link.download = 'kartu-profil-github.png';
+            link.download = `kartu-${inputUsername.value}.png`;
             link.href = canvas.toDataURL('image/png');
             document.body.appendChild(link);
             link.click();
@@ -114,9 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             semuaLink.forEach(link => link.style.pointerEvents = 'auto');
         }).catch(error => {
-            console.error('Gagal mengunduh kartu:', error);
             alert('Terjadi kesalahan saat mengunduh kartu. Coba lagi.');
-
             semuaLink.forEach(link => link.style.pointerEvents = 'auto');
         });
     }
