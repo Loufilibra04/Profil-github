@@ -75,11 +75,11 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (blog) {
                 try {
-                    blogLink = blog.startsWith('http') ? blog : `https:// ${blog}`;
+                    blogLink = blog.startsWith('http') ? blog : `https://${blog}`;
                     blogHostname = new URL(blogLink).hostname;
                 } catch (_) {
                     blogHostname = blog;
-                    blogLink = blog.startsWith('http') ? blog : `https:// ${blog}`;
+                    blogLink = blog.startsWith('http') ? blog : `https://${blog}`;
                 }
             }
 
