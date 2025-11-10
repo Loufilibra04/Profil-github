@@ -32,7 +32,3 @@ Teknologi yang digunakan untuk membangun proyek ini:
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![GitHub API](https://img.shields.io/badge/GitHub_API-181717?style=for-the-badge&logo=github&logoColor=white)
-
-## 📂 Struktur File Profesional
-
-Untuk menunjukkan praktik *coding* yang bersih, proyek ini sengaja dipisahkan menjadi tiga file utama dengan nama kustom yang deskriptif:
