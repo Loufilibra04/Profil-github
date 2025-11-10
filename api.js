@@ -57,50 +57,57 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function buatKartuProfil(data) {
-        wadahKontenKartu.innerHTML = '';
+        try {
+            wadahKontenKartu.innerHTML = '';
 
-        const fotoProfil = data.avatar_url;
-        const namaLengkap = data.name || data.login;
-        const usernameGithub = `@${data.login}`;
-        const bio = data.bio || 'Tidak ada bio.';
-        const lokasi = data.location || null;
-        const email = data.email || null;
-        const blog = data.blog || null;
-        const followers = data.followers;
-        const linkProfilGithub = data.html_url;
+            const fotoProfil = data.avatar_url;
+            const namaLengkap = data.name || data.login;
+            const usernameGithub = `@${data.login}`;
+            const bio = data.bio || 'Tidak ada bio.';
+            const lokasi = data.location || null;
+            const email = data.email || null;
+            const blog = data.blog || null;
+            const followers = data.followers;
+            const linkProfilGithub = data.html_url;
 
-        let blogHostname = '';
-        let blogLink = '';
-        if (blog) {
-            try {
-                blogLink = blog.startsWith('http') ? blog : `https://${blog}`;
-                blogHostname = new URL(blogLink).hostname;
-            } catch (_) {
-                blogHostname = blog;
-                blogLink = `https://${blog}`;
+            let blogHostname = '';
+            let blogLink = '';
+            
+            if (blog) {
+                try {
+                    blogLink = blog.startsWith('http') ? blog : `https:// ${blog}`;
+                    blogHostname = new URL(blogLink).hostname;
+                } catch (_) {
+                    blogHostname = blog;
+                    blogLink = blog.startsWith('http') ? blog : `https:// ${blog}`;
+                }
             }
-        }
 
-        const htmlKartu = `
-            <div class="kartu-profil-profesional" id="kartu-untuk-unduh">
-                <div class="area-kiri-kartu">
-                    <span class="logo">GITHUB PROFILE</span>
-                    <h2>${namaLengkap}</h2>
-                    <p class="bio-singkat">${bio}</p>
-                    <ul class="detail-kontak">
-                        <li><i class="fas fa-user-friends"></i> ${followers} Followers</li>
-                        ${lokasi ? `<li><i class="fas fa-map-marker-alt"></i> ${lokasi}</li>` : ''}
-                        ${email ? `<li><i class="fas fa-envelope"></i> ${email}</li>` : ''}
-                        ${blog ? `<li><i class="fas fa-globe"></i> <a href="${blogLink}" target="_blank" style="color: inherit; text-decoration: none;">${blogHostname}</a></li>` : ''}
-                        <li><i class="fab fa-github"></i> <a href="${linkProfilGithub}" target="_blank" style="color: inherit; text-decoration: none;">${usernameGithub}</a></li>
-                    </ul>
+            const htmlKartu = `
+                <div class="kartu-profil-profesional" id="kartu-untuk-unduh">
+                    <div class="area-kiri-kartu">
+                        <span class="logo">GITHUB PROFILE</span>
+                        <h2>${namaLengkap}</h2>
+                        <p class="bio-singkat">${bio}</p>
+                        <ul class="detail-kontak">
+                            <li><i class="fas fa-user-friends"></i> ${followers} Followers</li>
+                            ${lokasi ? `<li><i class="fas fa-map-marker-alt"></i> ${lokasi}</li>` : ''}
+                            ${email ? `<li><i class="fas fa-envelope"></i> ${email}</li>` : ''}
+                            ${blog ? `<li><i class="fas fa-globe"></i> <a href="${blogLink}" target="_blank" style="color: inherit; text-decoration: none;">${blogHostname}</a></li>` : ''}
+                            <li><i class="fab fa-github"></i> <a href="${linkProfilGithub}" target="_blank" style="color: inherit; text-decoration: none;">${usernameGithub}</a></li>
+                        </ul>
+                    </div>
+                    <div class="area-kanan-kartu">
+                        <img src="${fotoProfil}" alt="Foto Profil ${namaLengkap}">
+                    </div>
                 </div>
-                <div class="area-kanan-kartu">
-                    <img src="${fotoProfil}" alt="Foto Profil ${namaLengkap}">
-                </div>
-            </div>
-        `;
-        wadahKontenKartu.innerHTML = htmlKartu;
+            `;
+            wadahKontenKartu.innerHTML = htmlKartu;
+            
+        } catch (error) {
+            tampilkanPesanStatus(`Error saat membuat kartu: ${error.message}`, 'red');
+            tombolUnduhPNG.style.display = 'none';
+        }
     }
 
     async function unduhKartuPNG() {
