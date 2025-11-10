@@ -70,12 +70,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const linkProfilGithub = data.html_url;
 
         let blogHostname = '';
+        let blogLink = '';
         if (blog) {
             try {
-                let urlLengkap = blog.startsWith('http') ? blog : `https://${blog}`;
-                blogHostname = new URL(urlLengkap).hostname;
+                blogLink = blog.startsWith('http') ? blog : `https://${blog}`;
+                blogHostname = new URL(blogLink).hostname;
             } catch (_) {
                 blogHostname = blog;
+                blogLink = `https://${blog}`;
             }
         }
 
@@ -89,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <li><i class="fas fa-user-friends"></i> ${followers} Followers</li>
                         ${lokasi ? `<li><i class="fas fa-map-marker-alt"></i> ${lokasi}</li>` : ''}
                         ${email ? `<li><i class="fas fa-envelope"></i> ${email}</li>` : ''}
-                        ${blog ? `<li><i class="fas fa-globe"></i> <a href="${blog.startsWith('http') ? blog : `https://${blog}`}" target="_blank" style="color: inherit; text-decoration: none;">${blogHostname}</a></li>` : ''}
+                        ${blog ? `<li><i class="fas fa-globe"></i> <a href="${blogLink}" target="_blank" style="color: inherit; text-decoration: none;">${blogHostname}</a></li>` : ''}
                         <li><i class="fab fa-github"></i> <a href="${linkProfilGithub}" target="_blank" style="color: inherit; text-decoration: none;">${usernameGithub}</a></li>
                     </ul>
                 </div>
